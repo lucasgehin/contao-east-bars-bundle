@@ -10,6 +10,8 @@ use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\CoreBundle\ContaoCoreBundle;
 use Symfony\Component\Routing\RouteCollection;
 use LucasGehin\ContaoEastBarsBundle\ContaoEastBarsBundle;
+use ContaoBootstrap\Core\ContaoBootstrapCoreBundle;
+use ContaoBootstrap\Navbar\ContaoBootstrapNavbarBundle;
 
 class Plugin implements BundlePluginInterface
 {
@@ -17,7 +19,7 @@ class Plugin implements BundlePluginInterface
     {
         return [
             BundleConfig::create(ContaoEastBarsBundle::class)
-                ->setLoadAfter([ContaoCoreBundle::class]),
+                ->setLoadAfter([ContaoCoreBundle::class, ContaoBootstrapCoreBundle::class, ContaoBootstrapNavbarBundle::class]),
         ];
     }
 }
