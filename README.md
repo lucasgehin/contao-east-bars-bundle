@@ -1,0 +1,1 @@
+# contao-east-bars-bundle
