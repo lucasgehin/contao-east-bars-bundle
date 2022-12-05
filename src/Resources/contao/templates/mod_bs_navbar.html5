@@ -1,33 +1,37 @@
 <!-- indexer::stop -->
-<nav class="navbar <?php echo $this->class;?>" <?php if($this->cssID): ?><?php echo $this->cssID; ?><?php endif; ?>>
-    <?php $this->block('content'); ?>
-    <?php if($this->bs_addBrand): ?>
-        <?php $this->insert($this->bs_navbarBrandTemplate); ?>
-    <?php endif; ?>
-    <?php if($this->bs_isResponsive): ?>
-        <button
-                class="navbar-toggler collapsed"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbar-responsive-<?= $this->id ?>"
-                aria-controls="navbar-responsive-<?= $this->id ?>"
-                aria-expanded="false"
-                aria-label="<?= $this->togglerLabel ?>">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-    <?php endif; ?>
-
-    <?php if($this->bs_isResponsive): ?>
-    <div class="collapse navbar-collapse" id="navbar-responsive-<?php echo $this->id; ?>">
+<nav class="navbar navbar-expand-md p-3 text-bg-dark" <?php if($this->cssID): ?><?php echo $this->cssID; ?><?php endif; ?>>
+    <div class="container">
+        <?php $this->block('content'); ?>
+        <?php if($this->bs_addBrand): ?>
+            <?php $this->insert($this->bs_navbarBrandTemplate); ?>
+        <?php endif; ?>
+        <?php if($this->bs_isResponsive): ?>
+            <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbar-responsive-<?= $this->id ?>"
+                    aria-controls="navbar-responsive-<?= $this->id ?>"
+                    aria-expanded="false"
+                    aria-label="<?= $this->togglerLabel ?>">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" class="bi" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"></path>
+                </svg>
+            </button>
         <?php endif; ?>
 
-        <?php foreach($this->modules as $module): ?>
-            <?php if($module['class']): ?><div class="<?php echo $module['class']; ?>"><?php endif; ?>
-            <?php echo $module['module']; ?>
-            <?php if($module['class']): ?></div><?php endif; ?>
-        <?php endforeach; ?>
+        <?php if($this->bs_isResponsive): ?>
+        <div class="collapse navbar-collapse" id="navbar-responsive-<?php echo $this->id; ?>">
+            <?php endif; ?>
 
-        <?php if($this->bs_isResponsive): ?></div><?php endif; ?>
-    <?php $this->endblock(); ?>
+            <?php foreach($this->modules as $module): ?>
+                <?php if($module['class']): ?><div class="<?php echo $module['class']; ?>"><?php endif; ?>
+                <?php echo $module['module']; ?>
+                <?php if($module['class']): ?></div><?php endif; ?>
+            <?php endforeach; ?>
+
+            <?php if($this->bs_isResponsive): ?></div><?php endif; ?>
+        <?php $this->endblock(); ?>
+    </div>
 </nav>
 <!-- indexer::continue -->

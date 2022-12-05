@@ -1,0 +1,8 @@
+
+<a class="btn btn-primary" href="{{link_url::<?= $this->jumpTo; ?>}}">
+    <?php if ($this->logged): ?>
+        <?= $this->firstname ?> <?= $this->lastname ?>
+    <?php else: ?>
+        Espace adhérent
+    <?php endif; ?>
+</a>
