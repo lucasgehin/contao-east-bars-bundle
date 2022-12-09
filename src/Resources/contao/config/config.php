@@ -1,4 +1,5 @@
 <?php
+use LucasGehin\ContaoEastBarsBundle\Member;
 
 $GLOBALS['FE_MOD']['eastBars'] = [
     'memberEastBars' => LucasGehin\ContaoEastBarsBundle\Module\ModuleMemberEastBars::class,
@@ -6,3 +7,4 @@ $GLOBALS['FE_MOD']['eastBars'] = [
     'projectList' => LucasGehin\ContaoEastBarsBundle\Module\ModuleProjectList::class,
 ];
 
+$GLOBALS['TL_HOOKS']['updatePersonalData'][] = [Member::class, 'updateAvatar'];

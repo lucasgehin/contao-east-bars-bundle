@@ -1,0 +1,31 @@
+<div>
+    <?php if ($this->widget->value): ?>
+    <div class="avatar-preview">
+        <img src="<?= (\FilesModel::findByPk($this->widget->value)->path); ?>">
+        <div class="avatar-preview-description">Photo actuelle</div>
+    </div>
+    <?php endif; ?>
+    <span id="custom-file-label<?= $this->layout->getControlAttributes($this->widget)->getId() ?>"></span>
+</div>
+<label class="custom-file d-block">
+    <input <?= $this->layout->getControlAttributes($this->widget)->addClass('custom-file-input form-control') ?>>
+</label>
+<script>
+    if ('querySelector' in document && 'addEventListener' in window) {
+        (function () {
+            var input = document.getElementById('<?= $this->layout->getControlAttributes($this->widget)->getId() ?>');
+            input.addEventListener('change', function () {
+                var label = document.getElementById('custom-file-label<?= $this->layout->getControlAttributes($this->widget)->getId() ?>');
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        label.innerHTML = "<div class='avatar-preview'><img src='" + e.target.result + "'><div class='avatar-preview-description'>Nouvelle photo</div></div>";
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                } else {
+                    label.innerHTML = '';
+                }
+            });
+        })();
+    }
+</script>
