@@ -1,0 +1,62 @@
+<div class="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-2 g-md-3 g-lg-4 member-list">
+    <?php foreach ($this->members as $member): ?>
+        <div class="col member-item<?php if ($member['descriptionPicture']): ?> hoverable<?php endif; ?>" data-bs-toggle="modal" data-bs-target="#modal<?= $member['id'] ?>">
+            <div class="member-avatar">
+                <img class="img-primary" src="<?= $member['avatar'] ?>" alt="<?= $member['firstname'] ?> <?= $member['lastname'] ?>">
+                <?php if ($member['descriptionPicture']): ?>
+                    <img class="img-hover" src="<?= $member['descriptionPicture'] ?>" alt="<?= $member['firstname'] ?> <?= $member['lastname'] ?>">
+                <?php endif; ?>
+            </div>
+            <div class="text-center p-2">
+                <div class="fs-5 fw-bold">
+                    <?= $member['firstname'] ?> <?= $member['lastname'] ?>
+                </div>
+                <div class="text-muted" aria-hidden="true">
+                    Découvrir son profil
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="quote" viewBox="0 0 448 512">
+        <path d="M0 216C0 149.7 53.7 96 120 96h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V320 288 216zm256 0c0-66.3 53.7-120 120-120h8c17.7 0 32 14.3 32 32s-14.3 32-32 32h-8c-30.9 0-56 25.1-56 56v8h64c35.3 0 64 28.7 64 64v64c0 35.3-28.7 64-64 64H320c-35.3 0-64-28.7-64-64V320 288 216z"/>
+    </symbol>
+</svg>
+<?php foreach ($this->members as $member): ?>
+    <div class="modal modal-member fade" id="modal<?= $member['id'] ?>" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-fullscreen-lg-down">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+                    <img class="img-modal-avatar shadow-lg" src="<?= $member['avatar'] ?>" alt="<?= $member['firstname'] ?> <?= $member['lastname'] ?>">
+                    <h1 class="modal-title fs-4" id="exampleModalFullscreenLgLabel"><?= $member['firstname'] ?> <?= $member['lastname'] ?></h1>
+                    <?php if ($member['role']): ?>
+                        <div class="fs-5 fw-bolder text-warning"><?= $member['role'] ?></div>
+                    <?php endif; ?>
+                    <?php if ($member['instagram']): ?>
+                        <a class="instagram mb-1" href="https://instagram.com/<?= $member['instagram'] ?>" target="_blank">
+                            @<?= $member['instagram'] ?>
+                        </a>
+                    <?php endif; ?>
+                    A rejoint East Bars en <?= date('Y', $member['date']) ?>
+                    <?php if ($member['description']): ?>
+                        <div class="card card-member position-relative border-0 pt-4 mt-4">
+                            <span class="btn btn-icon btn-primary shadow-primary pe-none position-absolute top-0 start-0 translate-middle-y ms-4">
+                              <svg width="24" height="24"><use xlink:href="#quote"></use></svg>
+                            </span>
+                            <blockquote class="card-body pb-3 mb-0">
+                                <p class="mb-0"><?= $member['description'] ?></p>
+                            </blockquote>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($member['descriptionPicture']): ?>
+                        <img class="img-modal mt-4" src="<?= $member['descriptionPicture'] ?>" alt="<?= $member['firstname'] ?> <?= $member['lastname'] ?>">
+                    <?php endif; ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php endforeach; ?>

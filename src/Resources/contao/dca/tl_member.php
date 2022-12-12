@@ -38,4 +38,12 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['picture_secondary'] = [
     'sql' => "binary(16) NULL"
 ];
 
-$GLOBALS['TL_DCA']['tl_member']['palettes']['default'] = str_replace(';{groups_legend}', ';{eastbars_legend},picture_primary,picture_secondary,instagram,description,consentement;{groups_legend}', $GLOBALS['TL_DCA']['tl_member']['palettes']['default']);
+$GLOBALS['TL_DCA']['tl_member']['fields']['role_association'] = [
+    'exclude' => true,
+    'search' => true,
+    'inputType' => 'text',
+    'eval' => ['maxlength'=>255, 'feViewable'=>true, 'feGroup'=>'contact', 'tl_class'=>'w50'],
+    'sql' => "varchar(255) NOT NULL default ''"
+];
+
+$GLOBALS['TL_DCA']['tl_member']['palettes']['default'] = str_replace(';{groups_legend}', ';{eastbars_legend},picture_primary,picture_secondary,instagram,description,role_association,consentement;{groups_legend}', $GLOBALS['TL_DCA']['tl_member']['palettes']['default']);
