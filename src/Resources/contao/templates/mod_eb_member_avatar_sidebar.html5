@@ -1,0 +1,6 @@
+<div class="sidebar-avatar">
+    <img class="shadow-lg" src="<?= $this->avatar ?>" alt="<?= $this->firstname ?> <?= $this->lastname ?>">
+    <div class="fs-5 fw-bold">
+        <?= $this->firstname ?> <?= $this->lastname ?>
+    </div>
+</div>
