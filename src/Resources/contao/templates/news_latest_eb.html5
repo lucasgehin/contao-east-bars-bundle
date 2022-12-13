@@ -1,0 +1,22 @@
+
+<div class="card card-news-list border-0 shadow-md mb-3 layout_latest arc_<?= $this->archive->id ?> block<?= $this->class ?>">
+    <div>
+        <?php if ($this->addImage): ?>
+            <?php $this->insert('image', $this->arrData); ?>
+        <?php endif; ?>
+    </div>
+
+    <div class="card-body">
+        <h2><?= $this->linkHeadline ?></h2>
+
+        <?php if ($this->hasMetaFields): ?>
+            <div class="text-muted">
+                <?= $GLOBALS['TL_LANG']['MONTHS'][date('m', $this->timestamp) - 1] ?> <?= date('Y', $this->timestamp) ?>
+            </div>
+        <?php endif; ?>
+
+        <div class="mt-2 badge text-bg-light">
+            <?= $this->archive->title ?>
+        </div>
+    </div>
+</div>
