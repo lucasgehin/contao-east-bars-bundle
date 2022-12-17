@@ -46,4 +46,13 @@ $GLOBALS['TL_DCA']['tl_member']['fields']['role_association'] = [
     'sql' => "varchar(255) NOT NULL default ''"
 ];
 
-$GLOBALS['TL_DCA']['tl_member']['palettes']['default'] = str_replace(';{groups_legend}', ';{eastbars_legend},picture_primary,picture_secondary,instagram,description,role_association,consentement;{groups_legend}', $GLOBALS['TL_DCA']['tl_member']['palettes']['default']);
+$GLOBALS['TL_DCA']['tl_member']['fields']['cotisation'] = [
+    'exclude' => true,
+    'toggle' => true,
+    'filter' => true,
+    'inputType' => 'checkbox',
+    'eval' => ['feEditable'=>true, 'feViewable'=>true, 'feGroup'=>'contact', 'tl_class'=>'w50'],
+    'sql' => "char(1) NOT NULL default ''"
+];
+
+$GLOBALS['TL_DCA']['tl_member']['palettes']['default'] = str_replace(';{groups_legend}', ';{eastbars_legend},picture_primary,picture_secondary,instagram,description,role_association,consentement,cotisation;{groups_legend}', $GLOBALS['TL_DCA']['tl_member']['palettes']['default']);

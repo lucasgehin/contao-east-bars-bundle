@@ -5,6 +5,7 @@ $GLOBALS['FE_MOD']['eastBars'] = [
     'memberEastBars' => LucasGehin\ContaoEastBarsBundle\Module\ModuleMemberEastBars::class,
     'memberList' => LucasGehin\ContaoEastBarsBundle\Module\ModuleMemberList::class,
     'memberAvatarSidebar' => LucasGehin\ContaoEastBarsBundle\Module\ModuleMemberAvatarSidebar::class,
+    'memberListDesk' => LucasGehin\ContaoEastBarsBundle\Module\ModuleMemberListDesk::class,
     'projectTeaserList' => LucasGehin\ContaoEastBarsBundle\Module\ModuleProjectTeaserList::class,
     'projectList' => LucasGehin\ContaoEastBarsBundle\Module\ModuleProjectList::class,
 ];

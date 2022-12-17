@@ -5,6 +5,9 @@
       <trans-unit id="tl_member.consentement.0">
         <source>Apparaître dans la liste des membres</source>
       </trans-unit>
+      <trans-unit id="tl_member.cotisation.0">
+        <source>Cotisation réglée</source>
+      </trans-unit>
       <trans-unit id="tl_member.instagram.0">
         <source>Nom d'utilisateur Instagram</source>
       </trans-unit>

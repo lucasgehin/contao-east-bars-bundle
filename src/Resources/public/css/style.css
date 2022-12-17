@@ -452,3 +452,12 @@ p {
     margin: auto;
     display: block;
 }
+
+.ce_downloads ul {
+    list-style: none;
+    padding: 0;
+}
+.ce_downloads .image_container {
+    margin: 0;
+    display: inline-block;
+}

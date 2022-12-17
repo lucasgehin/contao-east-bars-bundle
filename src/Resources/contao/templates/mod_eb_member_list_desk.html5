@@ -1,0 +1,45 @@
+<div class="mt-4">
+    <h3>Liste des membres avec possibilité de modifier</h3>
+    <i>Affiché uniquement pour le bureau</i>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Nom prénom</th>
+                <th scope="col">Mail</th>
+                <th scope="col">Téléphone</th>
+                <th scope="col" class="text-center">Photo principale</th>
+                <th scope="col" class="text-center">Photo secondaire</th>
+                <th scope="col" class="text-center">Affiché</th>
+                <th scope="col" class="text-center">Cotisation</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php foreach ($this->members as $member): ?>
+                <?php
+                $class = '';
+                if ($member['avatar'] && $member['mail'] && $member['cotisation']) {
+                    $class = 'table-success';
+                }
+                if (!$member['avatar'] || !$member['phone']) {
+                    $class = 'table-warning';
+                }
+                if (!$member['cotisation']) {
+                    $class = 'table-danger';
+                }
+                ?>
+                <tr class="<?= $class ?>">
+                    <td><?= $member['firstname'] ?> <?= $member['lastname'] ?></td>
+                    <td><?= $member['mail'] ?></td>
+                    <td><?= $member['phone'] ?></td>
+                    <td class="text-center"><?= $member['avatar'] ? 'x' : '' ?></td>
+                    <td class="text-center"><?= $member['descriptionPicture'] ? 'x' : '' ?></td>
+                    <td class="text-center"><?= $member['consentement'] ? 'x' : '' ?></td>
+                    <td class="text-center"><?= $member['cotisation'] ? 'x' : '' ?></td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
