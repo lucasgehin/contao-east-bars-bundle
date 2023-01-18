@@ -30,7 +30,7 @@
                 }
                 ?>
                 <tr class="<?= $class ?>">
-                    <td><?= $member['firstname'] ?> <?= $member['lastname'] ?></td>
+                    <td><a href="<?= $member['link'] ?>"><?= $member['firstname'] ?> <?= $member['lastname'] ?></a></td>
                     <td><?= $member['mail'] ?></td>
                     <td><?= $member['phone'] ?></td>
                     <td class="text-center"><?= $member['avatar'] ? 'x' : '' ?></td>

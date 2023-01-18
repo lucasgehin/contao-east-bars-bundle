@@ -1,0 +1,59 @@
+<a class="btn btn-primary" href="{{link_url::<?= $this->jumpTo; ?>}}">
+    Retour
+</a>
+
+<h1 class="mt-2">Modifier les informations de <?= $this->member->firstname ?> <?= $this->member->lastname ?></h1>
+
+<?php if ($this->success): ?>
+<div class="alert alert-success">
+    Membre modifié avec succès.
+</div>
+<?php else: ?>
+<form action="" method="post">
+    <input type="hidden" name="FORM_SUBMIT" value="<?= $this->formId ?>">
+    <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken ?>">
+    <div class="form-group mb-3">
+        <div class="form-check">
+            <input type="checkbox" name="consentement" id="consentement" class="checkbox form-check-input" value="<?= $this->member->consentement ?>" <?php if ($this->member->consentement) echo 'checked'; ?>>
+            <label for="consentement" class="form-check-label">
+                <?= $GLOBALS['TL_LANG']['tl_member']['consentement'][0] ?>
+            </label>
+        </div>
+    </div>
+    <div class="form-group mb-3">
+        <label for="firstname">
+            <?= $GLOBALS['TL_LANG']['tl_member']['firstname'][0] ?><span class="mandatory">*</span>
+        </label>
+        <input class="form-control" id="firstname" name="firstname" type="text" value="<?= $this->member->firstname ?>" required="" maxlength="255">
+    </div>
+    <div class="form-group mb-3">
+        <label for="lastname">
+            <?= $GLOBALS['TL_LANG']['tl_member']['lastname'][0] ?><span class="mandatory">*</span>
+        </label>
+        <input class="form-control" id="lastname" name="lastname" type="text" value="<?= $this->member->lastname ?>" required="" maxlength="255">
+    </div>
+    <div class="form-group mb-3">
+        <label for="phone">
+            <?= $GLOBALS['TL_LANG']['tl_member']['phone'][0] ?>
+        </label>
+        <input class="form-control" id="phone" name="phone" type="tel" value="<?= $this->member->phone ?>" maxlength="64">
+    </div>
+    <div class="form-group mb-3">
+        <label for="email">
+            <?= $GLOBALS['TL_LANG']['tl_member']['email'][0] ?><span class="mandatory">*</span>
+        </label>
+        <input class="form-control" id="email" name="email" type="email" value="<?= $this->member->email ?>" required="" maxlength="255">
+    </div>
+    <div class="form-group mb-3">
+        <div class="form-check">
+            <input type="checkbox" name="cotisation" id="cotisation" class="checkbox form-check-input" value="<?= $this->member->cotisation ?>" <?php if ($this->member->cotisation) echo 'checked'; ?>>
+            <label for="cotisation" class="form-check-label">
+                <?= $GLOBALS['TL_LANG']['tl_member']['cotisation'][0] ?>
+            </label>
+        </div>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Valider</button>
+    </div>
+</form>
+<?php endif; ?>

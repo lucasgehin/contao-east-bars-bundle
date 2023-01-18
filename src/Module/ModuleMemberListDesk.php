@@ -5,6 +5,7 @@ namespace LucasGehin\ContaoEastBarsBundle\Module;
 use Contao\FilesModel;
 use Contao\MemberModel;
 use Contao\Module;
+use Contao\PageModel;
 use Contao\System;
 
 class ModuleMemberListDesk extends Module
@@ -42,6 +43,7 @@ class ModuleMemberListDesk extends Module
         foreach ($objMembers as $member) {
             $members[] = [
                 'id' => $member->id,
+                'link' => PageModel::findByPk($this->jumpTo)->getFrontendUrl('/' . $member->id),
                 'date' => $member->dateAdded,
                 'firstname' => $member->firstname,
                 'lastname' => $member->lastname,

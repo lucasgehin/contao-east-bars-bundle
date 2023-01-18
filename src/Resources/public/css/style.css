@@ -19,6 +19,10 @@ header {
     font-weight: 600;
 }
 
+iframe {
+    max-width: 100%;
+}
+
 .brand-logo {
     fill: #ffc108;
     width: 45px;
