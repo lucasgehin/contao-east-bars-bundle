@@ -49,6 +49,7 @@ class ModuleMemberEditDesk extends Module {
                 'lastname',
                 'phone',
                 'email',
+                'instagram',
             ];
             foreach ($fieldsToEdit as $fieldToEdit) {
                 $postField = Input::post($fieldToEdit);

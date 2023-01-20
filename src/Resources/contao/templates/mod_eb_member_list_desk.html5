@@ -2,8 +2,23 @@
     <h3>Liste des membres avec possibilité de modifier</h3>
     <i>Affiché uniquement pour le bureau</i>
 
+    <div class="d-flex flex-column flex-md-row justify-content-between">
+        <div>
+            <?= count($this->members) ?> membres / <?= $this->membersConsentement ?> affichés sur le site / <?= $this->membersCotisation ?> cotisations payées
+        </div>
+        <div>
+            <select id="member-select" class="form-select">
+                <option value="">Afficher tous les membres</option>
+                <option value="avatar-miss">Membres sans photo principale</option>
+                <option value="photo-miss">Membres sans photo secondaire</option>
+                <option value="phone-miss">Membres sans téléphone</option>
+                <option value="cotisation-miss">Membres sans cotisation à jour</option>
+            </select>
+        </div>
+    </div>
+
     <div class="table-responsive">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover" id="member-table">
             <thead>
             <tr>
                 <th scope="col">Nom prénom</th>
@@ -20,13 +35,22 @@
                 <?php
                 $class = '';
                 if ($member['avatar'] && $member['mail'] && $member['cotisation']) {
-                    $class = 'table-success';
+                    $class .= ' table-success';
                 }
                 if (!$member['avatar'] || !$member['phone']) {
-                    $class = 'table-warning';
+                    $class .= ' table-warning';
+                }
+                if (!$member['avatar']) {
+                    $class .= ' avatar-miss';
+                }
+                if (!$member['phone']) {
+                    $class .= ' phone-miss';
+                }
+                if (!$member['descriptionPicture']) {
+                    $class .= ' photo-miss';
                 }
                 if (!$member['cotisation']) {
-                    $class = 'table-danger';
+                    $class .= ' table-danger cotisation-miss';
                 }
                 ?>
                 <tr class="<?= $class ?>">
@@ -43,3 +67,15 @@
         </table>
     </div>
 </div>
+
+<script>
+    $(function() {
+        $('#member-select').on('change', function () {
+            $('#member-table tbody tr').removeClass('d-none')
+            var val = $(this).val()
+            if (val !== "") {
+                $('#member-table tbody tr:not(.' + val + ')').addClass('d-none')
+            }
+        })
+    });
+</script>

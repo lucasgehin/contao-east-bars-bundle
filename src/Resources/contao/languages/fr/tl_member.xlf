@@ -9,7 +9,7 @@
         <source>Cotisation réglée</source>
       </trans-unit>
       <trans-unit id="tl_member.instagram.0">
-        <source>Nom d'utilisateur Instagram</source>
+        <source>Nom d'utilisateur Instagram  (sans le @)</source>
       </trans-unit>
       <trans-unit id="tl_member.instagram.1">
         <source>Nom instagram (sans le @)</source>

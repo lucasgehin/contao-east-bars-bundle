@@ -59,6 +59,11 @@ class ModuleMemberListDesk extends Module
             ];
         }
 
+        $membersConsentement = MemberModel::findBy('consentement', true);
+        $membersCotisation = MemberModel::findBy('cotisation', true);
+
+        $this->Template->membersConsentement = count($membersConsentement);
+        $this->Template->membersCotisation = count($membersCotisation);
         $this->Template->members = $members;
     }
 }
